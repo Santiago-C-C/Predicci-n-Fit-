@@ -42,7 +42,7 @@ def user_input_features():
 df = user_input_features()
 
 # Cargamos el dataset
-fitness = pd.read_csv('fitness_data.csv', encoding='latin-1')
+fitness = pd.read_csv('Fitness_Class.csv', encoding='latin-1')
 
 X = fitness.drop(columns='is_fit')
 Y = fitness['is_fit']
