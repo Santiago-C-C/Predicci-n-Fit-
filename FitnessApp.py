@@ -48,7 +48,6 @@ fitness = pd.read_csv('Fitness_Class.csv', encoding='latin-1')
 X = fitness.drop(columns='is_fit')
 Y = fitness['is_fit']
 
-# Mantenemos el mismo estilo del modelo original (ajusté max_features a 9 por tener 10 columnas)
 classifier = DecisionTreeClassifier(
     max_depth=5, 
     criterion='gini', 
