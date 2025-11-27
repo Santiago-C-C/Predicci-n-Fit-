@@ -25,8 +25,8 @@ def user_input_features():
 
   user_input_data = {
                      'age': age,
-                     'height': height_cm,
-                     'weight': weight_kg,
+                     'height_cm': height_cm,
+                     'weight_kg': weight_kg,
                      'heart_rate': heart_rate,
                      'blood_pressure': blood_pressure,
                      'sleep_hours': sleep_hours,
