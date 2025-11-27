@@ -20,6 +20,8 @@ def user_input_features():
   activity_index = st.number_input('Índice de actividad (0-10):', min_value=0, max_value=10, value=5, step=1)
   smokes = st.number_input('¿Fuma? (0 = No, 1 = Sí):', min_value=0, max_value=1, value=0, step=1)
   gender = st.number_input('Género (0 = Mujer, 1 = Hombre):', min_value=0, max_value=1, value=0, step=1)
+  height = st.number_input('Altura (cm):', min_value=50, max_value=250, value=170, step=1)
+  weight = st.number_input('Peso (kg):', min_value=20, max_value=300, value=70, step=1)
 
   user_input_data = {
                      'age': age,
@@ -29,7 +31,9 @@ def user_input_features():
                      'nutrition_quality': nutrition_quality,
                      'activity_index': activity_index,
                      'smokes': smokes,
-                     'gender': gender}
+                     'gender': gender,
+                     'height': height,
+                     'weight': weight}
 
   features = pd.DataFrame(user_input_data, index=[0])
 
@@ -37,12 +41,19 @@ def user_input_features():
 
 df = user_input_features()
 
+# Cargamos el dataset
 fitness = pd.read_csv('fitness_data.csv', encoding='latin-1')
 
 X = fitness.drop(columns='is_fit')
 Y = fitness['is_fit']
 
-classifier = DecisionTreeClassifier( max_depth=5, criterion='gini', min_samples_leaf=25, max_features=6, random_state=1614175)
+# Mantenemos el mismo estilo del modelo original (ajusté max_features a 9 por tener 10 columnas)
+classifier = DecisionTreeClassifier(
+    max_depth=5, 
+    criterion='gini', 
+    min_samples_leaf=20, 
+    max_features=9, 
+    random_state=1614175)
 
 classifier.fit(X, Y)
 
